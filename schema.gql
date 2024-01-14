@@ -27,6 +27,7 @@ type User {
 
 type Query {
   getAllUsers: [User!]!
+  getUserById(id: Int!): User
 }
 
 type Mutation {

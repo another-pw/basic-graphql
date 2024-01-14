@@ -1,5 +1,6 @@
 import {
   Args,
+  Int,
   Mutation,
   Parent,
   Query,
@@ -21,6 +22,11 @@ export class UserResolver {
   @Query(() => [User])
   getAllUsers() {
     return this.userService.getAllUsers();
+  }
+
+  @Query(() => User, { nullable: true })
+  getUserById(@Args('id', { type: () => Int }) id: number) {
+    return this.userService.getUserById(id);
   }
 
   @Mutation(() => User)
