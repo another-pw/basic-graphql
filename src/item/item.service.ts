@@ -6,6 +6,10 @@ import { CreateItemDto } from './dto/item.input';
 export class ItemService {
   constructor(private prismaService: PrismaService) {}
 
+  getAllItems() {
+    return this.prismaService.item.findMany();
+  }
+
   getItemsByUserId(userId: number) {
     return this.prismaService.item.findMany({
       where: { userId },

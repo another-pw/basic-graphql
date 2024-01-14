@@ -20,6 +20,17 @@ export class UserService {
     });
   }
 
+  async getUserByItemId(id: number) {
+    const item = await this.prismaService.item.findFirst({
+      include: {
+        user: true,
+      },
+      where: { id },
+    });
+
+    return item.user;
+  }
+
   createUser(data: CreateUserDto) {
     return this.prismaService.user.create({ data });
   }

@@ -28,14 +28,23 @@ type User {
 type Query {
   getAllUsers: [User!]!
   getUserById(id: Int!): User
+  getAllItems: [Item!]!
 }
 
 type Mutation {
   createUser(data: CreateUserDto!): User!
+  createItem(data: CreateItemDto!): Item!
 }
 
 input CreateUserDto {
   username: String!
   password: String!
   name: String!
+}
+
+input CreateItemDto {
+  name: String!
+  description: String!
+  receivedAt: DateTime!
+  userId: Int!
 }
