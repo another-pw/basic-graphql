@@ -11,7 +11,10 @@ import { UserService } from './user.service';
 import { ItemService } from 'src/item/item.service';
 import { User } from './user.model';
 import { CreateUserDto } from './dto/user.input';
+import { UseGuards } from '@nestjs/common';
+import { JwtAuthGuard } from 'src/guards/jwt-auth.guard';
 
+@UseGuards(JwtAuthGuard)
 @Resolver(() => User)
 export class UserResolver {
   constructor(

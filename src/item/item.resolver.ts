@@ -10,7 +10,10 @@ import { UserService } from 'src/user/user.service';
 import { ItemService } from './item.service';
 import { Item } from './item.model';
 import { CreateItemDto } from './dto/item.input';
+import { UseGuards } from '@nestjs/common';
+import { JwtAuthGuard } from 'src/guards/jwt-auth.guard';
 
+@UseGuards(JwtAuthGuard)
 @Resolver(() => Item)
 export class ItemResolver {
   constructor(
